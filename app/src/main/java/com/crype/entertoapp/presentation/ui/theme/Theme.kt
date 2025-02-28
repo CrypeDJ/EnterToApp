@@ -1,4 +1,4 @@
-package com.crype.entertoapp.ui.theme
+package com.crype.entertoapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

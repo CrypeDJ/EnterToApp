@@ -1,4 +1,4 @@
-package com.crype.entertoapp.ui.theme
+package com.crype.entertoapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
