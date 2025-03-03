@@ -44,7 +44,7 @@ fun EnterNumberScreen(
             bottomPadding = 45.dp,
             lineHeight = 20.sp
         )
-        Row (
+        Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,7 +66,7 @@ fun EnterNumberScreen(
             )
         }
         ContinueButton(
-            onClick = {  },
+            onClick = { },
             isDisable = false,
             disableColor = DisableButton,
             activeColor = ActiveButton,
