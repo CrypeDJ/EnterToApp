@@ -1,10 +1,12 @@
-package com.crype.entertoapp.ui.theme
+package com.crype.entertoapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.crype.entertoapp.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -31,4 +33,12 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     )
     */
+)
+
+val Roboto = FontFamily(
+    Font(R.font.robotobold, FontWeight.Bold),
+    Font(R.font.robotoblack, FontWeight.Black),
+    Font(R.font.robotolight, FontWeight.Light),
+    Font(R.font.robotomedium, FontWeight.Medium),
+    Font(R.font.robotoregular, FontWeight.Normal)
 )

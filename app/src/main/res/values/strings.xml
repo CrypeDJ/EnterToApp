@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EnterToApp</string>
+    <string name="enter_num_title">Let\'s get started</string>
+    <string name="enter_num_desc">Enter your phone number. We will send you a confirmation code there</string>
+    <string name="enter_num_hint">Mobile number</string>
+    <string name="enter_num_button">Continue</string>
+    <string name="enter_code_title">Code</string>
+    <string name="enter_code_desc">Enter the code you received</string>
+    <string name="button_resend_code">No code received?</string>
+    <string name="resend_code_timer">Resend the code in </string>
 </resources>
