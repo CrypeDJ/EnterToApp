@@ -10,13 +10,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.crype.entertoapp.presentation.components.TopBar
 import com.crype.entertoapp.presentation.navigation.NavGraph
 import com.crype.entertoapp.presentation.navigation.Screens
-import com.crype.entertoapp.presentation.screen.ChooseCountryScreen
 import com.crype.entertoapp.presentation.ui.theme.EnterToAppTheme
 import com.crype.entertoapp.presentation.ui.theme.MainBackground
 
@@ -36,16 +34,16 @@ class MainActivity : ComponentActivity() {
                             }
                     }
                 ) { innerPadding ->
-                    Box(modifier = Modifier
-                        .padding(innerPadding)
-                        .padding(horizontal = 20.dp)
-                        .background(color = MainBackground)
+                    Box(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .padding(horizontal = 20.dp)
+                            .background(color = MainBackground)
                     ) {
-//                        NavGraph(
-//                            navController = navController,
-//                            startDestination = Screens.EnterNumberScreen.route
-//                        )
-                        ChooseCountryScreen()
+                        NavGraph(
+                            navController = navController,
+                            startDestination = Screens.EnterNumberScreen.route
+                        )
                     }
                 }
             }
