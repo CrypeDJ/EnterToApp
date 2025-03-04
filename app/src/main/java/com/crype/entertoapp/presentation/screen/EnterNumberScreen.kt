@@ -26,10 +26,7 @@ import com.crype.entertoapp.presentation.ui.theme.DisableButton
 fun EnterNumberScreen(
     //navController: NavController
 ) {
-    Column(
-        modifier = Modifier
-            .padding(horizontal = 20.dp)
-    ) {
+    Column {
         Title(
             text = stringResource(id = R.string.enter_num_title),
             fontSize = 32.sp,

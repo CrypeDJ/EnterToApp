@@ -26,7 +26,9 @@ class MainActivity : ComponentActivity() {
             EnterToAppTheme {
                 val navController = rememberNavController()
                 Scaffold(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = MainBackground),
                     topBar = {
                         if (!navController.currentDestination?.route.equals(Screens.EnterNumberScreen.route))
                             TopBar {
@@ -38,7 +40,6 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .padding(innerPadding)
                             .padding(horizontal = 20.dp)
-                            .background(color = MainBackground)
                     ) {
                         NavGraph(
                             navController = navController,

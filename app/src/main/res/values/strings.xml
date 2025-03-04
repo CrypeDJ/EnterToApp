@@ -5,8 +5,8 @@
     <string name="enter_num_hint">Mobile number</string>
     <string name="enter_num_button">Continue</string>
     <string name="enter_code_title">Code</string>
-    <string name="choose_country_title">Country</string>
     <string name="enter_code_desc">Enter the code you received</string>
+    <string name="choose_country_title">Country</string>
     <string name="button_resend_code">No code received?</string>
-    <string name="resend_code_timer">Resend the code in </string>
+    <string name="resend_code_timer">Resend the code in 0:</string>
 </resources>
