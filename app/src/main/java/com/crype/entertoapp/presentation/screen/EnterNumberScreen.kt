@@ -19,7 +19,7 @@ import com.crype.entertoapp.presentation.components.CountryNumberCode
 import com.crype.entertoapp.presentation.components.Description
 import com.crype.entertoapp.presentation.components.EnterNumber
 import com.crype.entertoapp.presentation.components.Title
-import com.crype.entertoapp.presentation.ui.theme.ActiveButton
+import com.crype.entertoapp.presentation.ui.theme.ActiveBlue
 import com.crype.entertoapp.presentation.ui.theme.DisableButton
 
 @Composable
@@ -69,7 +69,7 @@ fun EnterNumberScreen(
             onClick = { },
             isDisable = false,
             disableColor = DisableButton,
-            activeColor = ActiveButton,
+            activeColor = ActiveBlue,
             height = 56.dp,
             fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
