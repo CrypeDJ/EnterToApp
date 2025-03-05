@@ -59,7 +59,10 @@ fun EnterCodeScreen(
                 fontSize = 28.sp,
                 activeColor = ActiveBlock,
                 nonActiveColor = BackgroundEnterField,
-                spaceBetween = 8.dp
+                spaceBetween = 8.dp,
+                onCodeChange = { i, value ->
+                    code[i] = value
+                }
             )
         }
         Spacer(modifier = Modifier.height(24.dp))

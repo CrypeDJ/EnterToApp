@@ -10,7 +10,8 @@ import androidx.compose.ui.unit.TextUnit
 
 @Composable
 fun EnterCode(
-    code: MutableList<String>,
+    code: List<String>,
+    onCodeChange:(Int, String) -> Unit,
     blockWidth: Dp,
     blockHeight: Dp,
     fontSize: TextUnit,
@@ -19,28 +20,25 @@ fun EnterCode(
     spaceBetween: Dp
 ) {
     val codeLength = code.size
+    val focusRequesters = List(codeLength) { FocusRequester() }
 
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(spaceBetween),
-    ) {
-        val focusRequester = List(code.size) { FocusRequester() }
+    Row(horizontalArrangement = Arrangement.spacedBy(spaceBetween)) {
         code.forEachIndexed { i, digit ->
             CodeBlock(
-                isFocused = if (i == 0) true else code[i - 1].isNotEmpty(),
+                isFocused = i == 0 || code[i - 1].isNotEmpty(),
                 blockWidth = blockWidth,
                 blockHeight = blockHeight,
                 fontSize = fontSize,
                 activeColor = activeColor,
                 nonActiveColor = nonActiveColor,
                 value = digit,
-                focusRequester = focusRequester[i],
+                focusRequester = focusRequesters[i],
                 onValueChange = { newValue ->
                     if (newValue.length <= 1) {
-                        code[i] = newValue
-                        if (newValue.isNotEmpty() && i < codeLength - 1) {
-                            focusRequester[i + 1].requestFocus()
-                        } else if (newValue.isEmpty() && i > 0) {
-                            focusRequester[i - 1].requestFocus()
+                        onCodeChange(i,newValue)
+                        when {
+                            newValue.isNotEmpty() && i < codeLength - 1 -> focusRequesters[i + 1].requestFocus()
+                            newValue.isEmpty() && i > 0 -> focusRequesters[i - 1].requestFocus()
                         }
                     }
                 }
