@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -19,7 +18,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ContinueButton(
     onClick: () -> Unit,
-    isDisable: Boolean,
+    isActive: Boolean,
     disableColor: Color,
     activeColor: Color,
     height: Dp,
@@ -34,9 +33,10 @@ fun ContinueButton(
             .height(height),
         colors = ButtonDefaults.buttonColors().copy(
             contentColor = Color.White,
-            containerColor = if (isDisable) disableColor else activeColor
+            containerColor = if (isActive) activeColor else disableColor
         ),
-        shape = RoundedCornerShape(14.dp)
+        shape = RoundedCornerShape(14.dp),
+        enabled = isActive
     ) {
         Text(
             text = text,

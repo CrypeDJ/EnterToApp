@@ -18,7 +18,8 @@ fun ResendCodeButton(
     clickableColor: Color,
     nonClickableColor: Color,
     fontSize: TextUnit,
-    fontWeight: FontWeight,
+    fontWeightClickable: FontWeight,
+    fontWeightNonClickable: FontWeight,
     clickableText: String,
     nonClickableText: String,
     onClick: () -> Unit
@@ -31,10 +32,12 @@ fun ResendCodeButton(
             text = if (isClickable) clickableText else nonClickableText,
             fontSize = fontSize,
             fontFamily = Roboto,
-            fontWeight = fontWeight,
+            fontWeight = if (isClickable) fontWeightClickable else fontWeightNonClickable,
             color = if (isClickable) clickableColor else nonClickableColor,
             modifier = Modifier
-                .clickable {
+                .clickable(
+                    enabled = isClickable
+                ) {
                     if (isClickable) onClick()
                 }
         )

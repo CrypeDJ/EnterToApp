@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "542992748013",
+    "project_id": "entertoapp-2c57c",
+    "storage_bucket": "entertoapp-2c57c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542992748013:android:ee47b7d0a17ab8feababe4",
+        "android_client_info": {
+          "package_name": "com.crype.entertoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQvCq6aHWbfW2xSVRk4Z5syjp_A5ArUxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
