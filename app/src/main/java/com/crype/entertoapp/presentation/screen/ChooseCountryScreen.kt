@@ -21,19 +21,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.crype.entertoapp.R
 import com.crype.entertoapp.core.common.CountryCodes
 import com.crype.entertoapp.presentation.components.ChooseCountryItem
 import com.crype.entertoapp.presentation.components.Title
+import com.crype.entertoapp.presentation.navigation.Screens
 import com.crype.entertoapp.presentation.ui.theme.Border
+import com.crype.entertoapp.presentation.viewmodel.EnterViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ChooseCountryScreen(
-    //navController: NavController
+    navController: NavController,
+    viewModel: EnterViewModel = koinViewModel()
 ) {
-    val chosenIndex by remember {
-        mutableStateOf(1)
-    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,7 +63,7 @@ fun ChooseCountryScreen(
             ) {
                 itemsIndexed(CountryCodes.entries) { index, country ->
                     ChooseCountryItem(
-                        isChosen = index == chosenIndex,
+                        isChosen = viewModel.countryCode.value == country,
                         country = country,
                         flagIconPadding = 12.dp,
                         flagIconSize = 46.dp,
@@ -74,16 +76,11 @@ fun ChooseCountryScreen(
                         countryInfoVerticalPadding = 0.dp,
                         countryInfoHorizontalPadding = 3.dp
                     ) {
-
+                        viewModel.chooseCountry(country)
+                        navController.navigate(route = Screens.EnterNumberScreen.route)
                     }
                 }
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ChoosePreview() {
-    ChooseCountryScreen()
 }

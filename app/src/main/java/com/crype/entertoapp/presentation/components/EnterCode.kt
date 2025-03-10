@@ -1,5 +1,6 @@
 package com.crype.entertoapp.presentation.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
@@ -11,7 +12,7 @@ import androidx.compose.ui.unit.TextUnit
 @Composable
 fun EnterCode(
     code: List<String>,
-    onCodeChange:(Int, String) -> Unit,
+    onCodeChange: (Int, String) -> Unit,
     blockWidth: Dp,
     blockHeight: Dp,
     fontSize: TextUnit,
@@ -25,7 +26,7 @@ fun EnterCode(
     Row(horizontalArrangement = Arrangement.spacedBy(spaceBetween)) {
         code.forEachIndexed { i, digit ->
             CodeBlock(
-                isFocused = i == 0 || code[i - 1].isNotEmpty(),
+                isFocused = code[i].isEmpty() && (i == 0 || code[i - 1].isNotEmpty()),
                 blockWidth = blockWidth,
                 blockHeight = blockHeight,
                 fontSize = fontSize,
@@ -35,10 +36,12 @@ fun EnterCode(
                 focusRequester = focusRequesters[i],
                 onValueChange = { newValue ->
                     if (newValue.length <= 1) {
-                        onCodeChange(i,newValue)
+                        onCodeChange(i, newValue)
                         when {
                             newValue.isNotEmpty() && i < codeLength - 1 -> focusRequesters[i + 1].requestFocus()
-                            newValue.isEmpty() && i > 0 -> focusRequesters[i - 1].requestFocus()
+                            newValue.isEmpty() && i > 0 -> {
+                                focusRequesters[i - 1].requestFocus()
+                            }
                         }
                     }
                 }

@@ -11,11 +11,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.crype.entertoapp.presentation.components.TopBar
 import com.crype.entertoapp.presentation.navigation.NavGraph
 import com.crype.entertoapp.presentation.navigation.Screens
-import com.crype.entertoapp.presentation.ui.theme.EnterToAppTheme
 import com.crype.entertoapp.presentation.ui.theme.MainBackground
 
 class MainActivity : ComponentActivity() {
@@ -23,29 +23,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            EnterToAppTheme {
-                val navController = rememberNavController()
-                Scaffold(
+            val navController = rememberNavController()
+            val startDestination = Screens.EnterNumberScreen.route
+            Scaffold(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = MainBackground),
+                topBar = {
+                    val currentDestination = navController
+                        .currentBackStackEntryAsState().value?.destination?.route
+                    if (currentDestination != startDestination) {
+                        TopBar { navController.popBackStack() }
+                    }
+                }
+            ) { innerPadding ->
+                Box(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .background(color = MainBackground),
-                    topBar = {
-                        if (!navController.currentDestination?.route.equals(Screens.EnterNumberScreen.route))
-                            TopBar {
-                                navController.popBackStack()
-                            }
-                    }
-                ) { innerPadding ->
-                    Box(
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .padding(horizontal = 20.dp)
-                    ) {
-                        NavGraph(
-                            navController = navController,
-                            startDestination = Screens.EnterNumberScreen.route
-                        )
-                    }
+                        .padding(innerPadding)
+                        .padding(horizontal = 20.dp)
+                ) {
+                    NavGraph(
+                        navController = navController,
+                        startDestination = startDestination
+                    )
                 }
             }
         }
